@@ -86,6 +86,8 @@ app.listen(port, async ()=> {
     const [foo, bar, bazz] = await Promise.all(
       ['foo', 'bar', 'bazz', 'quq'].map( name => Thing.create({ name }))
     );
+
+    await foo.update({ userId: lucy.id });
     console.log(`listening on port ${port}`)
   }
   catch(ex){

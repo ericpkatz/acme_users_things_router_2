@@ -4,7 +4,7 @@ import { createThing, updateThing, destroyThing } from './store';
 import { Link } from 'react-router-dom';
 
 const Things = ()=> {
-  const { things } = useSelector(state => state);
+  const { things, users } = useSelector(state => state);
   const dispatch = useDispatch();
   const [name, setName ] = useState('');
   const [ errors, setErrors ] = useState([]);
@@ -51,9 +51,12 @@ const Things = ()=> {
       <ul>
         {
           things.map( thing => {
+            const user = users.find(user => user.id === thing.userId);
+            console.log(user);
             return (
               <li key={ thing.id }>
                 <Link to={`/things/${thing.id}`}>{ thing.name }</Link> ({ thing.rating})
+                Owned by { user ? user.name : 'nobody' }
                 <button onClick={ ev => destroy(thing)}>x</button>
                 <button onClick={ ()=> increment(thing)}>+</button>
               </li>

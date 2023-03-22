@@ -18,3 +18,16 @@ nav a {
 nav a.selected {
   border: solid 1px cornSilk;
 }
+
+button,input,select {
+  height: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > * {
+  margin: 1rem;
+}
